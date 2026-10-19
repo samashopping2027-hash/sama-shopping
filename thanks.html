@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2f6bff">
+  <link rel="preconnect" href="https://script.google.com">
+  <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Baloo+Bhaijaan+2:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E🧸%3C/text%3E%3C/svg%3E">
+  <meta name="robots" content="noindex, nofollow">
+  <title>تم استلام طلبك | taja market</title>
+</head>
+<body class="">
+  <div class="promo">🚚 توصيل لجميع المدن · الدفع عند الاستلام · نؤكد طلبك بالهاتف</div>
+  <header class="site-header" id="siteHeader">
+    <div class="wrap hrow">
+      <a class="brand" href="index.html" aria-label="taja market"><img class="brand-img" src="images/logo.png" alt="" width="54" height="54"><span dir="ltr">taja<b>market</b></span></a>
+      <form class="search" id="searchForm" role="search">
+        <input type="search" id="searchInput" placeholder="ابحث عن لعبة..." aria-label="البحث عن لعبة" autocomplete="off" enterkeyhint="search">
+        <button type="submit" aria-label="بحث"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+      </form>
+      <div class="hactions">
+        <a class="hbtn" href="#contact">تواصل معنا</a>
+        <button type="button" class="icon-btn" id="menuToggle" aria-label="القائمة" aria-expanded="false" aria-controls="mainNav">☰</button>
+      </div>
+    </div>
+    <nav class="main-nav" id="mainNav" aria-label="القائمة الرئيسية"><div class="wrap">
+      <a href="index.html">الرئيسية</a><a href="index.html#products">كل الألعاب</a><a href="index.html#products" data-go="offers">العروض</a><a href="#contact">تواصل معنا</a>
+    </div></nav>
+  </header>
+
+  <main class="wrap">
+    <section class="thanks">
+      <div class="check" aria-hidden="true">🎉</div>
+      <h1 class="fun">تم استلام طلبك بنجاح</h1>
+      <p>شكرًا لثقتك في taja market. سنتصل بك قريبًا لتأكيد الطلب.</p>
+      <dl class="tsum" id="tsum" hidden>
+        <div id="rId"><dt>رقم الطلب</dt><dd id="tId"></dd></div>
+        <div><dt>المنتج</dt><dd id="tProduct"></dd></div>
+        <div><dt>الكمية</dt><dd id="tQty"></dd></div>
+        <div><dt>المجموع</dt><dd id="tTotal"></dd></div>
+      </dl>
+      <p>يرجى إبقاء هاتفك متاحًا.</p>
+      <a class="btn btn-main" href="index.html" style="margin-top:20px">العودة إلى المتجر</a>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="wrap">
+      <div class="fgrid">
+        <div><h3 class="ftitle" dir="ltr">taja market</h3><p>متجر ألعاب للأطفال، نختار لك ألعابًا ممتعة بأسعار مناسبة، ونؤكد طلبك بالهاتف قبل التوصيل.</p></div>
+        <div><h3 class="ftitle">تابعنا</h3><div class="socials">
+          <a data-social="facebook" href="#">فيسبوك</a><a data-social="tiktok" href="#">تيك توك</a><a data-social="instagram" href="#">إنستغرام</a><a data-social="whatsapp" href="#">واتساب</a>
+        </div></div>
+      </div>
+      <p class="copy">© <span id="year">2026</span> taja market. جميع الحقوق محفوظة.</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var o = null;
+      try { o = JSON.parse(sessionStorage.getItem("taja_last_order")); } catch (e) {}
+      if (!o) return;
+      document.getElementById("tId").textContent = o.id ? "#" + o.id : "";
+      document.getElementById("rId").hidden = !o.id;
+      document.getElementById("tProduct").textContent = o.product || "";
+      document.getElementById("tQty").textContent = o.quantity;
+      document.getElementById("tTotal").textContent = formatMoney(o.total);
+      document.getElementById("tsum").hidden = false;
+    });
+  </script>
+</body>
+</html>

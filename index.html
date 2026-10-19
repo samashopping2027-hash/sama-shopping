@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#4a2c17">
+  <link rel="preconnect" href="https://script.google.com">
+  <link rel="dns-prefetch" href="https://script.google.com">
+  <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- الخط بدون حجب العرض: يظهر النص فورًا بخط النظام ثم يتبدّل -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400..800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400..800&display=swap"></noscript>
+  <!-- صورة السلايدر الأولى تُحمَّل بأعلى أولوية -->
+  <link rel="preload" as="image" href="images/slide-1.jpg" fetchpriority="high">
+  <link rel="stylesheet" href="style.css">
+  
+  <title>Sama shopping | ملابس، أحذية، إكسسوارات وعطور، الدفع عند الاستلام</title>
+  <meta name="description" content="ملابس وأحذية وإكسسوارات وعطور مختارة بأناقة وبأسعار مناسبة، توصيل لجميع المدن والدفع عند الاستلام مع تأكيد الطلب بالهاتف.">
+  <meta property="og:title" content="Sama shopping | ملابس، أحذية، إكسسوارات وعطور">
+  <meta property="og:description" content="أناقة لكل يوم: ملابس وأحذية وإكسسوارات وعطور، توصيل لجميع المدن والدفع عند الاستلام.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/slide-1.jpg">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body class="">
+  <div class="promo">🚚 توصيل لجميع المدن · الدفع عند الاستلام · نؤكد طلبك بالهاتف</div>
+  <header class="site-header" id="siteHeader">
+    <div class="wrap hrow">
+      <a class="brand" href="index.html" aria-label="Sama shopping"><img class="brand-img" src="images/logo.png" alt="" width="54" height="54" decoding="async"><span dir="ltr">Sama<b>shopping</b></span></a>
+      <form class="search" id="searchForm" role="search">
+        <input type="search" id="searchInput" placeholder="ابحث عن منتج..." aria-label="البحث عن منتج" autocomplete="off" enterkeyhint="search">
+        <button type="submit" aria-label="بحث"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+      </form>
+      <div class="hactions">
+        <a class="hbtn" href="#contact">تواصل معنا</a>
+        <button type="button" class="icon-btn" id="menuToggle" aria-label="القائمة" aria-expanded="false" aria-controls="mainNav">☰</button>
+      </div>
+    </div>
+    <nav class="main-nav" id="mainNav" aria-label="القائمة الرئيسية"><div class="wrap">
+      <a href="index.html" class="active">الرئيسية</a><a href="index.html#products">كل المنتجات</a><a href="#contact">تواصل معنا</a>
+    </div></nav>
+  </header>
+
+  <main>
+    <section class="slider" id="heroSlider" aria-roledescription="carousel" aria-label="عروض المتجر">
+      <!-- الشريحة الأولى فقط تُحمَّل فورًا، والبقية تُحمَّل بعد اكتمال الصفحة (data-img) -->
+      <article class="slide photo on"><div class="s-bg" style="--g:linear-gradient(160deg,#4a2c17,#8b5a3c);--img:url('images/slide-1.jpg');--pos:68% 8%"></div>
+        <div class="wrap s-body"><h2>أناقتك تبدأ من Sama shopping</h2><p>ملابس وأحذية وإكسسوارات وعطور مختارة بعناية لإطلالة تليق بك.</p><a class="btn btn-main" href="#products">تسوّقي الآن</a></div></article>
+      <article class="slide photo"><div class="s-bg" data-img="images/slide-2.jpg" style="--g:linear-gradient(135deg,#4a2c17,#8b5a3c);--pos:68% 8%"></div>
+        <div class="wrap s-body"><h2>عطور وإكسسوارات تكمّل إطلالتك</h2><p>اختر عطرك المفضل ولمسة الإكسسوار المناسبة بأسعار مناسبة.</p><a class="btn btn-main" href="#products">اكتشف المنتجات</a></div></article>
+      <article class="slide photo"><div class="s-bg" data-img="images/slide-3.jpg" style="--g:linear-gradient(135deg,#3a2112,#6b4226);--pos:68% 8%"></div>
+        <div class="wrap s-body"><h2>اطلب بسهولة وادفع عند الاستلام</h2><p>نتصل بك لتأكيد الطلب ثم نوصله إلى بابك.</p><a class="btn btn-main" href="#products">ابدأ الطلب</a></div></article>
+      <button type="button" class="s-arrow s-next" aria-label="التالي">‹</button>
+      <button type="button" class="s-arrow s-prev" aria-label="السابق">›</button>
+      <div class="s-dots"></div><div class="s-bar"><span></span></div>
+    </section>
+
+    <section class="trust three" aria-label="مزايا المتجر"><div class="wrap">
+      <div class="trust-i"><span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6.5h11v9.5H3z"/><path d="M14 9.5h4l3 3.2V16h-7z"/><circle cx="7.5" cy="17.5" r="1.9"/><circle cx="17.5" cy="17.5" r="1.9"/></svg></span><div>توصيل سريع<small>إلى مدينتك</small></div></div>
+      <div class="trust-i"><span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="2.5"/><circle cx="12" cy="12" r="2.8"/><path d="M6 9.5h.01M18 14.5h.01"/></svg></span><div>الدفع عند الاستلام<small>ادفع حين تستلم</small></div></div>
+      <div class="trust-i"><span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><div>تأكيد بالهاتف<small>قبل شحن الطلب</small></div></div>
+    </div></section>
+
+    <section class="shop" id="products"><div class="wrap">
+      <div class="shop-head">
+        <h2>ملابس · أحذية · إكسسوارات · عطور</h2>
+        <div class="tools">
+          <select class="sort" id="sortSel" aria-label="الترتيب"><option value="new">الأحدث</option><option value="low">الأرخص</option><option value="high">الأغلى</option></select>
+          <span class="count" id="shopCount"></span>
+        </div>
+      </div>
+      <div class="grid" id="shopGrid" aria-live="polite"></div>
+      <div class="state" id="shopState" hidden></div>
+      <div class="more" id="shopMore" hidden><button type="button" class="btn btn-ghost" id="moreBtn">عرض المزيد</button></div>
+      <noscript><p class="state">يرجى تفعيل JavaScript لعرض المنتجات.</p></noscript>
+    </div></section>
+
+    <section class="how"><div class="wrap">
+      <h2 class="sec-title fun">كيف تطلب؟ <span>بثلاث خطوات سهلة</span></h2>
+      <div class="how-grid">
+        <div class="how-i"><b>1</b><h3 class="fun">اختر منتجك</h3><p>تصفّح الملابس والأحذية والإكسسوارات والعطور واختر ما يعجبك.</p></div>
+        <div class="how-i"><b>2</b><h3 class="fun">املأ بياناتك</h3><p>الاسم والهاتف والعنوان، دقيقة واحدة فقط.</p></div>
+        <div class="how-i"><b>3</b><h3 class="fun">استلم وادفع</h3><p>نتصل بك للتأكيد ثم نوصل الطلب، وتدفع عند الاستلام.</p></div>
+      </div>
+    </div></section>
+
+    <section class="faq"><div class="wrap">
+      <h2 class="sec-title fun">أسئلة شائعة</h2>
+      <div class="faq-list">
+        <details><summary>هل أدفع قبل الاستلام؟</summary><p>لا، الدفع يكون عند الاستلام فقط.</p></details>
+        <details><summary>كيف يتم تأكيد الطلب؟</summary><p>نتصل بك على رقم الهاتف الذي أدخلته لتأكيد الطلب والعنوان قبل الشحن.</p></details>
+        <details><summary>هل التوصيل لجميع المدن؟</summary><p>نعم، نوصل إلى جميع المدن. أدخل مدينتك وعنوانك بوضوح عند الطلب.</p></details>
+        <details><summary>كيف أختار المقاس المناسب؟</summary><p>تجد المقاسات المتوفرة في صفحة كل منتج، وإن احتجت مساعدة تواصل معنا وسنرشدك.</p></details>
+        <details><summary>ماذا لو لم يرد أحد على الهاتف؟</summary><p>تأكد أن رقمك صحيح وأن هاتفك متاح بعد الطلب، فلا نشحن إلا بعد التأكيد.</p></details>
+      </div>
+    </div></section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="wrap">
+      <div class="f-brand"><img class="f-logo" src="images/logo.png" alt="Sama shopping" width="72" height="72" loading="lazy" decoding="async"><h3 class="ftitle" dir="ltr">Sama shopping</h3><p>متجر للملابس والأحذية والإكسسوارات والعطور، نختار لك منتجات أنيقة بأسعار مناسبة، ونؤكد طلبك بالهاتف قبل التوصيل.</p></div>
+      <div class="social-bar"><h3 class="ftitle">تابعنا</h3><div class="socials">
+        <a data-social="facebook" href="#">فيسبوك</a><a data-social="tiktok" href="#">تيك توك</a><a data-social="instagram" href="#">إنستغرام</a><a data-social="whatsapp" href="#">واتساب</a>
+      </div></div>
+      <p class="copy">© <span id="year">2026</span> Sama shopping. جميع الحقوق محفوظة.</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+  <script src="index.js" defer></script>
+</body>
+</html>

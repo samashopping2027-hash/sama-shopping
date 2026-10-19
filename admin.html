@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>لوحة التحكم | taja market</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="ads-sim.css">
+  <link rel="stylesheet" href="wa-sim.css">
+</head>
+<body class="admin-body">
+
+  <!-- ========== شاشة تسجيل الدخول ========== -->
+  <main id="loginView" class="login-wrap" hidden>
+    <section class="login-card">
+      <div class="logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>
+      </div>
+      <h1 class="login-title" dir="ltr">taja market</h1>
+      <p class="login-sub">لوحة تحكم المدير</p>
+
+      <form id="loginForm" novalidate>
+        <div class="field">
+          <label for="username">اسم المستخدم</label>
+          <input id="username" type="text" autocomplete="username" autocapitalize="off" spellcheck="false">
+        </div>
+        <div class="field">
+          <label for="password">كلمة المرور</label>
+          <div class="pw">
+            <input id="password" type="password" autocomplete="current-password">
+            <button type="button" id="togglePassword" >إظهار</button>
+          </div>
+        </div>
+        <div id="loginMessage" class="message" role="alert" hidden></div>
+        <button type="submit" id="loginBtn" class="btn btn-main">تسجيل الدخول</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- ========== لوحة التحكم ========== -->
+  <div id="appView" hidden>
+    <div id="overlay" class="overlay"></div>
+
+    <!-- الشريط الجانبي -->
+    <aside id="sidebar" class="sidebar">
+      <div class="side-brand">
+        <span class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>
+        </span>
+        <span dir="ltr">taja market</span>
+      </div>
+      <nav class="side-nav">
+        <button type="button" class="nav-btn active" data-section="home">الرئيسية</button>
+        <button type="button" class="nav-btn" data-section="products">المنتجات</button>
+        <button type="button" class="nav-btn" data-section="orders">الطلبات</button>
+        <button type="button" class="nav-btn" data-section="ads">محاكي الإعلانات</button>
+        <button type="button" class="nav-btn" data-section="wa">محاكي واتساب</button>
+      </nav>
+      <a class="nav-btn store-link" href="index.html" target="_blank" rel="noopener">عرض المتجر ↗</a>
+      <button type="button" id="logoutBtn" class="nav-btn logout">تسجيل الخروج</button>
+    </aside>
+
+    <div class="app-main">
+      <header class="topbar">
+        <button type="button" id="menuBtn" class="menu-btn" aria-label="فتح القائمة">☰</button>
+        <h2 id="pageTitle">الرئيسية</h2>
+        <a class="store-chip" href="index.html" target="_blank" rel="noopener">عرض المتجر</a>
+        <span class="chip-a" id="adminName"></span>
+      </header>
+
+      <main class="content">
+
+        <!-- الرئيسية -->
+        <section id="sec-home">
+          <div id="dashError" class="message error" hidden>
+            <span id="dashErrorText"></span><br>
+            <button type="button" id="retryBtn" class="btn btn-ghost btn-sm">إعادة المحاولة</button>
+          </div>
+
+          <div class="stats">
+            <div class="stat"><span class="stat-num" id="statProducts">-</span><span class="stat-label">عدد المنتجات</span></div>
+            <div class="stat"><span class="stat-num" id="statOrders">-</span><span class="stat-label">عدد الطلبات</span></div>
+            <div class="stat"><span class="stat-num" id="statNew">-</span><span class="stat-label">الطلبات الجديدة</span></div>
+            <div class="stat"><span class="stat-num" id="statSales">-</span><span class="stat-label">إجمالي المبيعات</span></div>
+          </div>
+
+          <div class="panel">
+            <h3>آخر الطلبات</h3>
+            <div class="table-wrap">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>رقم الطلب</th><th>اسم العميل</th><th>المنتج</th>
+                    <th>الكمية</th><th>المجموع</th><th>الحالة</th>
+                  </tr>
+                </thead>
+                <tbody id="latestOrders"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- المنتجات -->
+        <section id="sec-products" hidden>
+          <div class="section-head">
+            <button type="button" id="addProductBtn" class="btn btn-main btn-sm">+ إضافة منتج</button>
+            <button type="button" id="refreshProducts" class="btn btn-ghost btn-sm">تحديث</button>
+          </div>
+          <p id="productsState" class="state-msg" hidden></p>
+          <div id="productsGrid" class="pgrid"></div>
+        </section>
+
+        <!-- الطلبات -->
+        <section id="sec-orders" hidden>
+          <div class="section-head">
+            <button type="button" id="refreshOrders" class="btn btn-ghost btn-sm">تحديث</button>
+          </div>
+          <div class="panel">
+            <div class="table-wrap">
+              <table class="table table-wide">
+                <thead>
+                  <tr>
+                    <th>رقم الطلب</th><th>التاريخ</th><th>المنتج</th><th>اسم العميل</th>
+                    <th>الهاتف</th><th>المدينة</th><th>العنوان</th><th>الكمية</th>
+                    <th>السعر</th><th>المجموع</th><th>الحالة</th><th>حذف</th>
+                  </tr>
+                </thead>
+                <tbody id="ordersBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- محاكي الحملات الإعلانية -->
+        <section id="sec-ads" hidden>
+          <div id="adsSim" class="ads-sim"></div>
+        </section>
+
+        <!-- محاكي إعلان واتساب -->
+        <section id="sec-wa" hidden>
+          <div class="wa-sim">
+
+            <div class="wa-card">
+              <h3>🛒 المنتج</h3>
+              <div class="field">
+                <label for="wa-price">سعر البيع</label>
+                <input id="wa-price" type="number" inputmode="decimal" min="0" step="any">
+              </div>
+              <div class="field">
+                <label for="wa-cost">تكلفة المنتج</label>
+                <input id="wa-cost" type="number" inputmode="decimal" min="0" step="any">
+              </div>
+              <div class="field">
+                <label for="wa-shipping">التوصيل</label>
+                <input id="wa-shipping" type="number" inputmode="decimal" min="0" step="any">
+              </div>
+            </div>
+
+            <div class="wa-card">
+              <h3>📢 الإعلان</h3>
+              <div class="field">
+                <label for="wa-budget">الميزانية</label>
+                <input id="wa-budget" type="number" inputmode="decimal" min="0" step="any">
+              </div>
+              <div class="field">
+                <label for="wa-messages">عدد الرسائل</label>
+                <input id="wa-messages" type="number" inputmode="numeric" min="0" step="1">
+              </div>
+              <div class="field">
+                <label for="wa-confirm">التأكيد %</label>
+                <input id="wa-confirm" type="number" inputmode="decimal" min="0" max="100" step="any">
+              </div>
+              <div class="field">
+                <label for="wa-deliver">التوصيل %</label>
+                <input id="wa-deliver" type="number" inputmode="decimal" min="0" max="100" step="any">
+              </div>
+              <div id="wa-msg" class="message error" role="alert" hidden></div>
+              <button type="button" id="waCalcBtn" class="btn btn-main">احسب الآن</button>
+            </div>
+
+            <div class="wa-card" id="wa-results" hidden>
+              <h3>📈 النتائج</h3>
+              <div class="table-wrap">
+                <table class="table wa-table">
+                  <thead>
+                    <tr>
+                      <th>الرسائل</th><th>سعر الرسالة</th><th>مؤكد</th><th>غير مؤكد</th>
+                      <th>موصل</th><th>غير موصل</th><th>الربح</th><th>ROI</th><th>الحالة</th>
+                    </tr>
+                  </thead>
+                  <tbody><tr id="wa-row"></tr></tbody>
+                </table>
+              </div>
+              <div class="wa-notes" id="wa-notes" hidden></div>
+            </div>
+
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ========== نافذة إضافة/تعديل منتج ========== -->
+  <div id="productModal" class="modal" hidden>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-head">
+        <h3 id="modalTitle">إضافة منتج</h3>
+        <button type="button" class="modal-close" data-close aria-label="إغلاق">×</button>
+      </div>
+      <form id="productForm" novalidate>
+        <div class="modal-body">
+          <div class="field">
+            <label for="f-name">اسم المنتج</label>
+            <input id="f-name" name="name" type="text" maxlength="150">
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-price">السعر (د.م)</label>
+              <input id="f-price" name="price" type="number" inputmode="decimal" min="0" step="any">
+            </div>
+            <div class="field">
+              <label for="f-oldPrice">السعر القديم (اختياري)</label>
+              <input id="f-oldPrice" name="oldPrice" type="number" inputmode="decimal" min="0" step="any">
+            </div>
+          </div>
+          <div class="field">
+            <label>صور المنتج (حتى 4 صور)</label>
+            <div id="uploads" class="uploads"></div>
+            <small class="hint">الصورة الأولى هي الصورة الرئيسية. تُضغط الصور تلقائيًا قبل الرفع لتكون سريعة.</small>
+          </div>
+          <div class="field">
+            <label for="f-description">الوصف</label>
+            <textarea id="f-description" name="description" rows="8" maxlength="15000" placeholder="اكتب وصف المنتج كاملًا، ويمكنك استعمال عدة أسطر وفقرات"></textarea>
+          </div>
+          <div class="field">
+            <label>صور GIF في الوصف (حتى 8)</label>
+            <div id="gifList" class="gif-list"></div>
+            <button type="button" id="addGifBtn" class="btn btn-ghost btn-sm">+ إضافة GIF</button>
+            <input type="file" id="gifInput" accept="image/gif" multiple hidden>
+            <small class="hint">حجم كل GIF لا يزيد عن 5 ميغابايت. تظهر تحت نص الوصف في صفحة المنتج.</small>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-stock">المخزون</label>
+              <input id="f-stock" name="stock" type="number" inputmode="numeric" min="0" step="1">
+            </div>
+            <div class="field">
+              <label for="f-status">الحالة</label>
+              <select id="f-status" name="status">
+                <option value="active">نشط</option>
+                <option value="inactive">غير نشط</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-foot">
+          <div id="productMessage" class="message error" role="alert" hidden></div>
+          <div class="modal-actions">
+            <button type="submit" id="saveProductBtn" class="btn btn-main">حفظ</button>
+            <button type="button" class="btn btn-ghost" data-close>إلغاء</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========== نافذة تأكيد الحذف ========== -->
+  <div id="confirmModal" class="modal" hidden>
+    <div class="modal-box small" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+      <div class="modal-head">
+        <h3 id="confirmTitle">حذف المنتج</h3>
+        <button type="button" class="modal-close" data-close aria-label="إغلاق">×</button>
+      </div>
+      <div class="modal-body">
+        <p id="confirmText" class="confirm-text"></p>
+      </div>
+      <div class="modal-foot">
+        <div class="modal-actions">
+          <button type="button" id="confirmYes" class="btn btn-danger">نعم، احذف نهائيًا</button>
+          <button type="button" class="btn btn-ghost" data-close>إلغاء</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+  <script src="admin.js"></script>
+  <script src="ads-sim.js"></script>
+  <script src="wa-sim.js"></script>
+</body>
+</html>

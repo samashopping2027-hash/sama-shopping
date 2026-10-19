@@ -1,0 +1,28 @@
+/* taja market — محاكي الحملات الإعلانية */
+.ads-sim{display:grid;gap:16px}
+.ads-note{margin:0;padding:10px 14px;font-size:.88rem;line-height:1.7;color:#8a6a00;background:#fff8e0;border:1px solid #ffe08a;border-radius:14px}
+.ads-grid{display:grid;gap:16px}
+.ads-sim h3{display:flex;align-items:center;gap:8px}
+.ads-sim h3::before{content:"";width:5px;height:18px;border-radius:5px;background:var(--yellow)}
+.ads-sim details{margin-top:4px;padding-top:12px;border-top:1px solid var(--line)}
+.ads-sim summary{margin-bottom:12px;color:var(--blue);font-weight:800;cursor:pointer}
+.ads-tabs{display:flex;gap:6px;margin-bottom:14px;padding:4px;background:#fff;border:1px solid var(--line);border-radius:999px}
+.ads-tabs button{flex:1;min-height:40px;border:0;border-radius:999px;background:none;color:var(--muted);font-weight:800;cursor:pointer;transition:all .2s}
+.ads-tabs button.on{background:var(--blue);color:#fff}
+.ads-kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}
+.ads-kpis .stat-num{font-size:1.2rem}
+.ads-kpis .stat.good{border-top-color:var(--mint)}.ads-kpis .stat.good .stat-num{color:#0f8f68}
+.ads-kpis .stat.bad{border-top-color:var(--coral)}.ads-kpis .stat.bad .stat-num{color:#d63a4f}
+.ads-verdict{padding:12px 14px;border:1px solid;border-radius:14px;font-weight:700;line-height:1.7}
+.ads-verdict.good{color:#0f8f68;border-color:#b7ecd9;background:#e3f8f0}
+.ads-verdict.bad{color:#d63a4f;border-color:#ffc2cb;background:#ffe9ec}
+.ads-verdict.mid{color:#8a6a00;border-color:#ffe08a;background:#fff8e0}
+.ads-funnel{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.ads-funnel li{display:grid;grid-template-columns:90px 1fr auto;align-items:center;gap:10px;font-size:.9rem}
+.ads-funnel .bar{height:12px;overflow:hidden;background:var(--bg);border-radius:99px}
+.ads-funnel .bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--blue),#7a5cff);transition:width .5s}
+.ads-funnel b{min-width:70px;text-align:left;font-variant-numeric:tabular-nums}
+.ads-chart{display:block;width:100%;height:auto}
+.ads-chart text{fill:var(--muted);font-size:11px;font-family:inherit}
+.ads-sim .table{min-width:520px}
+@media(min-width:900px){.ads-grid{grid-template-columns:380px 1fr;align-items:start}.ads-kpis{grid-template-columns:repeat(3,1fr)}}

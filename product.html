@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2f6bff">
+  <link rel="preconnect" href="https://script.google.com">
+  <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Baloo+Bhaijaan+2:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E🧸%3C/text%3E%3C/svg%3E">
+  <title>اللعبة | taja market</title>
+</head>
+<body class="has-cta">
+  <div class="promo">🚚 توصيل لجميع المدن · الدفع عند الاستلام · نؤكد طلبك بالهاتف</div>
+  <header class="site-header" id="siteHeader">
+    <div class="wrap hrow">
+      <a class="brand" href="index.html" aria-label="taja market"><img class="brand-img" src="images/logo.png" alt="" width="54" height="54"><span dir="ltr">taja<b>market</b></span></a>
+      <form class="search" id="searchForm" role="search">
+        <input type="search" id="searchInput" placeholder="ابحث عن لعبة..." aria-label="البحث عن لعبة" autocomplete="off" enterkeyhint="search">
+        <button type="submit" aria-label="بحث"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+      </form>
+      <div class="hactions">
+        <a class="hbtn" href="#contact">تواصل معنا</a>
+        <button type="button" class="icon-btn" id="menuToggle" aria-label="القائمة" aria-expanded="false" aria-controls="mainNav">☰</button>
+      </div>
+    </div>
+    <nav class="main-nav" id="mainNav" aria-label="القائمة الرئيسية"><div class="wrap">
+      <a href="index.html">الرئيسية</a><a href="index.html#products">كل الألعاب</a><a href="index.html#products" data-go="offers">العروض</a><a href="#contact">تواصل معنا</a>
+    </div></nav>
+  </header>
+
+  <main class="wrap ppage">
+    <nav class="crumbs" aria-label="مسار التنقل"><a href="index.html">الرئيسية</a><span>/</span><a href="index.html#products">الألعاب</a><span>/</span><span id="crumbName">...</span></nav>
+    <div class="state" id="pState">جاري تحميل المنتج...</div>
+
+    <article class="pview" id="productView" hidden>
+      <div class="gal">
+        <div class="gtrack" id="gTrack"></div>
+        <div class="gdots" id="gDots"></div>
+        <div class="gthumbs" id="gThumbs"></div>
+      </div>
+
+      <div class="box pmain">
+        <h1 class="ptitle fun" id="pTitle"></h1>
+        <div class="pp"><span class="pnow" id="pPrice"></span><span class="pwas" id="pOld" hidden></span><span class="poff" id="pOff" hidden></span></div>
+        <p class="psave" id="pSave" hidden></p>
+        <div class="pmeta"><span class="pill" id="pStatus"></span><span id="pStock"></span><button type="button" class="btn btn-ghost" id="shareBtn" hidden style="min-height:38px;padding:0 16px;margin-inline-start:auto">مشاركة</button></div>
+        <a class="btn btn-main cta" href="#orderBox" id="goOrder" data-go-order>🛒 اطلب الآن</a>
+        <ul class="perks">
+          <li>💵 الدفع عند الاستلام</li>
+          <li>🚚 التوصيل لجميع المدن</li>
+          <li>📞 نؤكد طلبك بالهاتف قبل الشحن</li>
+        </ul>
+      </div>
+
+      <section class="box obox" id="orderBox">
+        <h2 class="fun">اطلب الآن</h2>
+        <ol class="steps"><li>أدخل بياناتك</li><li>نتصل بك لتأكيد الطلب</li><li>نوصل طلبك لعنوانك</li></ol>
+        <form id="orderForm" novalidate>
+          <div class="fld"><label for="oName">الاسم الكامل <b>*</b></label><input id="oName" name="customerName" type="text" autocomplete="name" maxlength="100"><span class="ferr" data-for="customerName"></span></div>
+          <div class="fld"><label for="oPhone">رقم الهاتف <b>*</b></label><input id="oPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="06XXXXXXXX" maxlength="20"><span class="ferr" data-for="phone"></span></div>
+          <div class="fld"><label for="oCity">المدينة <b>*</b></label><input id="oCity" name="city" type="text" autocomplete="address-level2" maxlength="60"><span class="ferr" data-for="city"></span></div>
+          <div class="fld"><label for="oAddress">العنوان <b>*</b></label><textarea id="oAddress" name="address" rows="2" autocomplete="street-address" maxlength="300"></textarea><span class="ferr" data-for="address"></span></div>
+          <div class="fld"><label for="qtyInput">الكمية</label>
+            <div class="qty"><button type="button" id="qtyMinus" aria-label="إنقاص">−</button><input id="qtyInput" name="quantity" type="text" inputmode="numeric" value="1" maxlength="3"><button type="button" id="qtyPlus" aria-label="زيادة">+</button></div>
+            <span class="ferr" data-for="quantity"></span></div>
+          <div class="tot"><span>المجموع</span><strong id="oTotal">0 د.م</strong></div>
+          <div class="omsg err" id="oMsg" role="alert" hidden></div>
+          <button type="submit" id="oBtn" class="btn btn-main sub">تأكيد الطلب</button>
+        </form>
+      </section>
+
+      <section class="box pdesc-box" id="pDesc" hidden>
+        <h2 class="fun">🎈 وصف اللعبة</h2>
+        <div class="pdesc fun" id="pDescBody"></div>
+        <a class="btn btn-main cta" href="#orderBox" data-go-order>🛒 اطلبها الآن</a>
+      </section>
+    </article>
+
+    <section class="related" id="related" hidden><h2>ألعاب أخرى قد تعجبك</h2><div class="grid" id="relatedGrid"></div></section>
+  </main>
+
+  <div class="sticky-cta" id="stickyCta" aria-hidden="true">
+    <div><small>السعر</small><strong id="sPrice"></strong></div>
+    <a class="btn btn-main" href="#orderBox" data-go-order tabindex="-1">🛒 اطلب الآن</a>
+  </div>
+
+  <footer class="site-footer" id="contact">
+    <div class="wrap">
+      <div class="fgrid">
+        <div><h3 class="ftitle" dir="ltr">taja market</h3><p>متجر ألعاب للأطفال، نختار لك ألعابًا ممتعة بأسعار مناسبة، ونؤكد طلبك بالهاتف قبل التوصيل.</p></div>
+        <div><h3 class="ftitle">تابعنا</h3><div class="socials">
+          <a data-social="facebook" href="#">فيسبوك</a><a data-social="tiktok" href="#">تيك توك</a><a data-social="instagram" href="#">إنستغرام</a><a data-social="whatsapp" href="#">واتساب</a>
+        </div></div>
+      </div>
+      <p class="copy">© <span id="year">2026</span> taja market. جميع الحقوق محفوظة.</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+  <script src="product.js" defer></script>
+</body>
+</html>
