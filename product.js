@@ -1,4 +1,4 @@
-/* taja market — product.js: صفحة المنتج + إرسال الطلب */
+/* Sama shopping — product.js: صفحة المنتج + إرسال الطلب */
 document.addEventListener("DOMContentLoaded", () => {
   const $ = id => document.getElementById(id);
   const id = new URLSearchParams(location.search).get("id");
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function show(p) {
     product = p;
-    document.title = p.name + " | taja market";
+    document.title = p.name + " | Sama shopping";
     $("crumbName").textContent = p.name;
     $("pTitle").textContent = p.name;
     $("pPrice").textContent = $("sPrice").textContent = formatMoney(p.price);
@@ -68,10 +68,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // المعرض
     const imgs = ["image1", "image2", "image3", "image4"].map(k => p[k]).filter(u => /^https?:\/\//i.test(u || ""));
     $("gTrack").innerHTML = imgs.length
-      ? imgs.map((u, i) => '<div class="gslide"><img src="' + esc(imgUrl(u, 900)) + '" alt="' + esc(p.name) + '" width="900" height="900"' + (i ? ' loading="lazy"' : "") + ' decoding="async"></div>').join("")
-      : '<div class="gslide" style="font-size:4rem;background:var(--bg)">🧸</div>';
+      ? imgs.map((u, i) => '<div class="gslide"><img src="' + esc(imgUrl(u, 720)) + '" srcset="' + esc(imgUrl(u, 480)) + ' 480w, ' + esc(imgUrl(u, 720)) + ' 720w, ' + esc(imgUrl(u, 1000)) + ' 1000w" sizes="(min-width:900px) 520px, 100vw" alt="' + esc(p.name) + '" width="900" height="900"' + (i ? ' loading="lazy"' : ' fetchpriority="high"') + ' decoding="async"></div>').join("")
+      : '<div class="gslide" style="font-size:4rem;background:var(--bg)">🛍️</div>';
     $("gDots").innerHTML = imgs.length > 1 ? imgs.map((_, i) => "<i" + (i ? "" : ' class="on"') + "></i>").join("") : "";
-    $("gThumbs").innerHTML = imgs.length > 1 ? imgs.map((u, i) => '<button type="button" class="gthumb' + (i ? "" : " on") + '" data-i="' + i + '" aria-label="صورة ' + (i + 1) + '"><img src="' + esc(imgUrl(u, 150)) + '" alt=""></button>').join("") : "";
+    $("gThumbs").innerHTML = imgs.length > 1 ? imgs.map((u, i) => '<button type="button" class="gthumb' + (i ? "" : " on") + '" data-i="' + i + '" aria-label="صورة ' + (i + 1) + '"><img src="' + esc(imgUrl(u, 150)) + '" alt="" width="64" height="64" loading="lazy" decoding="async"></button>').join("") : "";
     const track = $("gTrack");
     const mark = i => {
       [].forEach.call($("gDots").children, (d, k) => d.classList.toggle("on", k === i));
@@ -204,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     const others = list.filter(p => String(p.id) !== String(id) && Number(p.stock) > 0).slice(0, 4);
     if (!others.length) return;
-    $("relatedGrid").innerHTML = others.map((p, i) => productCardHtml(p, 9 + i)).join("");
+    $("relatedGrid").innerHTML = others.map((p, i) => productCardHtml(p, 9 + i).replace(/<img\b(?![^>]*\bloading=)/gi, '<img loading="lazy" decoding="async"')).join("");
     $("related").hidden = false;
   }
   $("relatedGrid").addEventListener("error", e => { if (e.target.tagName === "IMG") { e.target.parentElement.classList.add("no-img"); e.target.remove(); } }, true);
